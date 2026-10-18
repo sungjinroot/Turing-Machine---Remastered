@@ -1,0 +1,18 @@
+
+LEFT
+RIGHT
+LEFT
+RIGHT
+
+
+start:
+    LEFT
+    RIGHT
+    LEFT
+    WRITE 3
+    WRITE 9
+
+test:
+    LEFTf
+    
+    
