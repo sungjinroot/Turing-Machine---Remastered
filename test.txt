@@ -5,14 +5,16 @@ LEFT
 RIGHT
 
 
-start:
+start: LEFT
     LEFT
     RIGHT
     LEFT
-    WRITE 3
+    WRITE 6
     WRITE 9
 
-test:
-    LEFTf
+    IF 5 GOTO 3ef
+
+test: IF _ GOTO start
+    LEFT
     
     
