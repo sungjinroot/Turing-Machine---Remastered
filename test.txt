@@ -5,10 +5,14 @@ LEFT
 RIGHT
 
 
-start: LEFT
+rest: bruh: 
+
+john: cage: 
+
+start: GOTO START 
     LEFT
     RIGHT
-    LEFT
+    LEFT 
     WRITE 6
     WRITE 9
 
