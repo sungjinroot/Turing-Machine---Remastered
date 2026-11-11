@@ -4,8 +4,12 @@ class Analyze:
     def __init__(self,Tokens):
         self.Tokens = Tokens
         self.labels = self.getLabels()
-        self.indexes = self.getIndexes()
+        self.jumpTable = self.getIndexes()
+        self.size = len(self.Tokens)
         self.verifyLabels()
+    
+    def getInstruction(self,index):
+        return self.Tokens[index].lexemme
 
     def getLabels(self):
         labels = []
@@ -20,6 +24,7 @@ class Analyze:
                     labels.append(label)
         return labels
 
+    #transfer to validation
     def verifyLabels(self):
         for Token in self.Tokens:
             if not Token.isLabel:
@@ -28,6 +33,7 @@ class Analyze:
                 elif Token.lexemme[0] == "IF":
                     self.verifyExistence(Token.lexemme[3],Token.line)
 
+    #transfer to validation
     def verifyExistence(self,label,line):
         if label not in self.labels:
             Errors.Handle.handleNonExisting(label,line)
@@ -39,7 +45,7 @@ class Analyze:
 
         for Token in self.Tokens:
             if Token.isLabel:
-                indexes[Token.lexemme[0]] = index
+                indexes[Token.lexemme[0][:-1]] = index
                 index += 1
             else:
                 index += 1

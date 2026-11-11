@@ -17,6 +17,8 @@ class Tape:
             if self.head.right.right == None:
                 if self.head.right.data == "_":
                     self.head.right = None
+        self.printTape()
+        print()
 
     def right(self):
         if self.head.right == None:
@@ -26,9 +28,13 @@ class Tape:
             self.head = self.head.right
         else:
             self.head = self.head.right
+        self.printTape()
+        print()
 
     def write(self,char):
         self.head.data = char
+        self.printTape()
+        print()
     
     def read(self):
         return self.head.data

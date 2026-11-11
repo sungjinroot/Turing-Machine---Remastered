@@ -1,25 +1,16 @@
 
-LEFT
-RIGHT
-LEFT
-RIGHT
-
+WRITE 1
 RIGHT 
+WRITE 0 
+RIGHT 
+WRITE 1
+LEFT
+LEFT
+LEFT
+LEFT
 
-rest: bruh: 
+scan: RIGHT
+    IF _ GOTO append
+    GOTO scan
 
-john: cage: 
-
-start: GOTO start 
-    LEFT
-    RIGHT
-    LEFT 
-    WRITE 6
-    WRITE 9
-
-    IF 5 GOTO start
-
-test: IF _ GOTO start
-    LEFT
-
-    
+append: WRITE 1
