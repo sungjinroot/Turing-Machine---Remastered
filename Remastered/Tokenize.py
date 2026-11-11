@@ -1,3 +1,4 @@
+from Remastered import Validation
 
 class Token:
     def __init__(self,line,lexemme):
@@ -5,6 +6,6 @@ class Token:
         self.lexemme = lexemme
         self.token = None
         self.size = len(lexemme)
-    
+        self.isLabel = Validation.Validate.isLabel(lexemme)
 
 

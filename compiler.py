@@ -1,14 +1,21 @@
-from Remastered import Lexical,Syntax
+from Remastered import Lexical,Syntax,Semantic,Errors
 
 Tokens = Lexical.Lex.scan("test.txt")
 
 for Token in Tokens:
     if Token.size == 4:
-        Syntax.Verify.validateCondition(Token)
+        Syntax.Parse.parseCondition(Token)
     
     elif Token.size == 2:
-        Syntax.Verify.validateAction(Token)
+        Syntax.Parse.parseAction(Token)
     
     elif Token.size == 1:
-        Syntax.Verify.validateInstruction(Token)
-    
+        Syntax.Parse.parseInstruction(Token)
+    else:
+        Errors.Handle.handleSyntaxError(Token)
+
+Instructions = Semantic.Analyze(Tokens)
+
+
+
+

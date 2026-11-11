@@ -4,21 +4,22 @@ RIGHT
 LEFT
 RIGHT
 
+RIGHT 
 
 rest: bruh: 
 
 john: cage: 
 
-start: GOTO START 
+start: GOTO start 
     LEFT
     RIGHT
     LEFT 
     WRITE 6
     WRITE 9
 
-    IF 5 GOTO 3ef
+    IF 5 GOTO start
 
 test: IF _ GOTO start
     LEFT
-    
+
     

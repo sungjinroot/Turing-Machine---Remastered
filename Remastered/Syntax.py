@@ -1,34 +1,28 @@
-from Remastered import Validation
+from Remastered import Validation,Errors
 
-class Verify:
+class Parse:
     @staticmethod
-    def validateInstruction(Token):
+    def parseInstruction(Token):
         if not (Validation.Validate.isLabel(Token.lexemme) or Token.lexemme[0] in ["LEFT","RIGHT","HALT"]):
-            print(f"Syntax Error: {Token.lexemme[0]} at line {Token.line}")
-            exit()
+            Errors.Handle.handleSyntaxError(Token)
     
     @staticmethod
-    def validateAction(Token):
+    def parseAction(Token):
         if Token.lexemme[0] == "GOTO":
             return
         elif Token.lexemme[0] == "WRITE":
             if len(Token.lexemme[1]) != 1:
-                print(f"Syntax Error: {Token.lexemme[0]} {Token.lexemme[1]} at line {Token.line}")
-                exit()
+                Errors.Handle.handleSyntaxError(Token)
         else:
-            print(f"Syntax Error: {Token.lexemme[0]} {Token.lexemme[1]} at line {Token.line}")
-            exit()
+            Errors.Handle.handleSyntaxError(Token)
    
     @staticmethod
-    def validateCondition(Token):
+    def parseCondition(Token):
         if Token.lexemme[0] != "IF":
-            print(f"Syntax Error: {Token.lexemme[0]} at line {Token.line}")
-            exit()
+            Errors.Handle.handleSyntaxError(Token)
 
         if len(Token.lexemme[1]) < 1 or len(Token.lexemme[1]) > 1:
-            print(f"Syntax Error: {Token.lexemme[0]} at line {Token.line}")
-            exit()
+            Errors.Handle.handleSyntaxError(Token)
         
         if Token.lexemme[2] != "GOTO":
-            print(f"Syntax Error: {Token.lexemme[0]} at line {Token.line}")
-            exit()
+            Errors.Handle.handleSyntaxError(Token)
