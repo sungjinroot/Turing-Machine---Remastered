@@ -20,7 +20,7 @@ Halted = False
 index = 0
 step = 0
 
-while Halted != True or index < instructions.size:
+while Halted == False or index < instructions.size:
     for counter in range(index,instructions.size):
         instruction = instructions.getInstruction(index)
         
@@ -30,7 +30,9 @@ while Halted != True or index < instructions.size:
 
             elif instruction[0] == "RIGHT":
                 TuringMachine.right()
-            #halt here    
+            elif instruction[0] == "HALT":
+                Halted = True
+                break
         
         elif len(instruction) == 2:
             if instruction[0] == "GOTO":
@@ -44,11 +46,13 @@ while Halted != True or index < instructions.size:
             if instruction[1] == TuringMachine.read():
                 index = instructions.jumpTable[instruction[3]]
                 break
-        
         index += 1
 
-        time.sleep(0.5)
+        time.sleep(0.05)
     step += 1
+
+    if Halted:
+        break
 
     if step >= 10000:
         print("Runtime Error")
